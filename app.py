@@ -16,6 +16,18 @@ from fastapi import FastAPI, Request, UploadFile, File, Form
 from fastapi.responses import StreamingResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust for specific frontend origins in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 from langchain_core.messages import (
     HumanMessage,
     AIMessage,
