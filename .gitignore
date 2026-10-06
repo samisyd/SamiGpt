@@ -1,3 +1,11 @@
+
+# Local Databases & Vector Stores
+chroma_db/
+*.sqlite
+*.sqlite3
+*.db
+data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
