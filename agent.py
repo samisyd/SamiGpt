@@ -20,6 +20,7 @@ from langchain_core.messages import SystemMessage
 from langgraph.graph import StateGraph, START, MessagesState
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.checkpoint.sqlite import SqliteSaver
+from langchain_openai import ChatOpenAI
 from tools import tools
 
 Path("data").mkdir(exist_ok=True)
@@ -81,11 +82,14 @@ def build_agent(model_name: str):
     selected_model = normalize_model_name(model_name)
 
     # Initialize ChatGoogleGenerativeAI
-    llm = ChatGoogleGenerativeAI(
-        model=selected_model,
-        temperature=0.3,
-        streaming=True
-    )
+    # llm = ChatGoogleGenerativeAI(
+    #     model=selected_model,
+    #     temperature=0.3,
+    #     streaming=True
+    # )
+
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3)
+    # llm = OpenAI(temperature=0.3, streaming=True)
 
     llm_with_tools = llm.bind_tools(tools)
 

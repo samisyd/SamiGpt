@@ -15,7 +15,7 @@ config = {
     }
 
 for message_chunk, metadata in agent.stream(
-    {'messages': [HumanMessage(content="what is my name?")]},
+    {'messages': [HumanMessage(content="My name is Sami?")]},
     config= config,
     stream_mode= 'messages'):
 
